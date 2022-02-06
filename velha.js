@@ -5,6 +5,9 @@ var vencedorSelecionado = document.getElementById('vencedor-selecionado');
 mudarJogador('X'); // vai iniciar com x
 
 function escolherQuadrado(id){
+    if (vencedor !== null) {
+        return;
+    }
 
     var quadrado = document.getElementById(id);//pega elemento do html
 
@@ -108,4 +111,18 @@ function checaSequencia(quadrado1, quadrado2, quadrado3){
         eigual = true;
     }
     return eigual;
+}
+
+function reiniciar()
+{
+    vencedor = null;
+    vencedorSelecionado.innerHTML = '';
+
+    for (var i = 1; i <= 9; i++) {
+        var quadrado = document.getElementById(i);
+        quadrado.style.background = '#eee';
+        quadrado.style.color = '#eee';
+        quadrado.innerHTML = '-';
+    }
+    mudarJogador('X');
 }
